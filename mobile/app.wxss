@@ -1,0 +1,255 @@
+/**app.wxss**/
+@import 'common.wxss';
+@import '/pages/common/footer/footer.wxss';
+@import '/pages/common/cart/cart.wxss';
+@import '/pages/common/step/step.wxss';
+
+page {
+  font-size: 28rpx;
+  color: #333;
+  box-sizing: border-box;
+  background: #eee;
+}
+
+/**
+  * flex
+  */
+
+.flex {
+  display: flex;
+}
+
+.flexfc {
+  display: flex;
+  flex-direction: column;
+}
+
+.flexac {
+  display: flex;
+  align-items: center;
+}
+
+.flexjc {
+  display: flex;
+  justify-content: center;
+}
+
+.flexcc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flexsb {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flexsa {
+  display: flex;
+  justify-content: space-around;
+}
+
+.flexbox {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flexje {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.col {
+  flex: 1;
+}
+
+/**
+* layout
+*/
+
+.w1 {
+  width: 8.33333%;
+}
+
+.w2 {
+  width: 16.66667%;
+}
+
+.w3 {
+  width: 25%;
+}
+
+.w4 {
+  width: 33.33333%;
+}
+
+.w5 {
+  width: 41.66667%;
+}
+
+.w6 {
+  width: 50%;
+}
+
+.w7 {
+  width: 58.33333%;
+}
+
+.w8 {
+  width: 66.66667%;
+}
+
+.w9 {
+  width: 75%;
+}
+
+.w10 {
+  width: 83.33333%;
+}
+
+.w11 {
+  width: 91.66667%;
+}
+
+.w12 {
+  width: 100%;
+}
+
+.plr40 {
+  padding-left: 40rpx;
+  padding-right: 40rpx;
+}
+.plr20 {
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+}
+.ptb40 {
+  padding-top: 40rpx;
+  padding-bottom: 40rpx;
+}
+.pb20 {
+  padding-bottom: 20rpx;
+}
+.mb15 {
+  margin-bottom: 15rpx;
+}
+
+.pl30 {
+  padding-left: 30rpx;
+}
+
+.lh88 {
+  line-height: 88rpx;
+}
+
+.h88 {
+  height: 88rpx;
+}
+
+.h400 {
+  height: 400rpx;
+}
+
+.bb {
+  border-bottom: 1px solid #cdcdcd;
+}
+
+.bt {
+  border-top: 1px solid #cdcdcd;
+}
+
+.bl {
+  border-left: 1px solid #cdcdcd;
+}
+
+.br {
+  border-right: 1px solid #cdcdcd;
+}
+
+/**
+* text
+*/
+
+.tc {
+  text-align: center;
+}
+
+.tl {
+  text-align: left;
+}
+
+.tr {
+  text-align: right;
+}
+
+.fs20 {
+  font-size: 20rpx;
+}
+
+.fs24 {
+  font-size: 24rpx;
+}
+
+.oneline {
+  height: 24rpx;
+  line-height: 24rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.twoline {
+  height: 48rpx;
+  line-height: 24rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.threeline {
+  height: 60rpx;
+  line-height: 20rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+/**
+* color
+*/
+
+.cred {
+  color: crimson;
+}
+
+.cdeep {
+  color: #000;
+}
+
+.cdark {
+  color: #333;
+}
+
+.cgory {
+  color: #666;
+}
+
+.clight {
+  color: #999;
+}
+.bgwhite {
+  background: #fff;
+}

@@ -1,0 +1,17 @@
+<template name="footer">
+  <view class="{{page != 'category' && 'h88'}}"></view>
+  <view class="footer">
+    <view class="item {{page == 'home' && 'active'}}">
+      <navigator open-type='redirect' url="/pages/home/home">首页</navigator>
+    </view>
+    <view class="item {{page == 'category' && 'active'}}">
+      <navigator open-type='redirect' url="/pages/category/category">分类</navigator>
+    </view>
+    <view class="item {{page == 'order' && 'active'}}">
+      <navigator open-type='redirect' url="/pages/order/order">订单</navigator>
+    </view>
+    <view class="item {{page == 'user' && 'active'}}">
+      <navigator open-type='redirect' url="/pages/user/user">我的</navigator>
+    </view>
+  </view>
+</template>

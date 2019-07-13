@@ -6,16 +6,19 @@ import Two from './Two/Two';
 Router.addRoute({
     title: 'Test',
     path: '/test',
+    isMune: true,
     childs: [
         {
             title: 'one',
             path: '/one',
-            component: One
+            component: One,
+            isMune: true
         },
         {
             title: 'two',
             path: '/two',
-            component: Two
+            component: Two,
+            isMune: true
         }
     ]
 });

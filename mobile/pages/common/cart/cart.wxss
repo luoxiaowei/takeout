@@ -1,0 +1,29 @@
+.cart {
+  position: fixed;
+  bottom: 88rpx;
+  width: 100%;
+  left: 0;
+  z-index: 999;
+  background: #fff;
+}
+.cart .bar {
+  position: relative;
+  z-index: 1000;
+  background: #fff;
+  border-top: 1px solid #cdcdcd;
+}
+.cart .btn {
+  width: 200rpx;
+  background: cornflowerblue;
+  color: #fff;
+  text-align: center;
+  line-height: 88rpx;
+}
+.cart-popup {
+  max-height: 80vh;
+  width: 100%;
+  position: absolute;
+  bottom: 176rpx;
+  left: 0;
+  box-sizing: border-box;
+}

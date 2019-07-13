@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { Layout, LocaleProvider, Menu, Icon, Button } from 'antd';
+import zhCN from 'antd/es/locale-provider/zh_CN';
+import { Iconfont } from 'components/Common';
+import styles from './Main.less';
+const { Header, Footer, Sider, Content } = Layout;
+const { SubMenu } = Menu;
+
 
 export default class Main extends Component {
     static propTypes = {
@@ -8,21 +15,83 @@ export default class Main extends Component {
     }
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            collapsed: false
+        };
+    }
+
+    renderMenu = (list) => {
+        return list && list.map(item => {
+            if (item.childs && item.childs.length > 0) {
+                return (
+                    <SubMenu key={item.path} title={
+                        <div>
+                            <Iconfont className={'pr10 cwhite'} type={item.icon || 'product'} />
+                            <span className={''}>{item.title}</span>
+                        </div>
+                    }>
+                        {this.renderMenu(item.childs)}
+                    </SubMenu>
+                );
+            } else {
+                return item.isMune ? (
+                    <Menu.Item key={item.path}>
+                        <Link to={item.path}>
+                            <Iconfont className={'pr10 cwhite'} type={item.icon || 'product'} />
+                            <span>{item.title}</span>
+                        </Link>
+                    </Menu.Item>
+                ) : null;
+            }
+        });
+    }
+    getDefaultOpenKeys = (key) => {
+        const { menuList } = this.props;
+        let keys = [];
+        const run = (list, pid) => {
+            list.forEach(item => {
+                if(key == item.path) {
+                    return pid ? keys = [pid] : null;
+                }
+                if (item.childs && item.childs.length > 0) {
+                    run(item.childs, item.path);
+                }
+            })
+        }
+        run(menuList);
+        return keys;
     }
 
     render() {
-        const { children } = this.props;
+        const { children, menuList, location } = this.props;
+        let defaultOpenKeys = this.getDefaultOpenKeys(location.pathname);
         return (
-            <div>
-                <div className={'test'}/>
-                <div className={'test2'}/>
-                <div>月份layout layout layout layout layout layout</div>
-                <Link to={'/one'}>one</Link><br/>
-                <Link to={'/two'}>two</Link><br/>
-                <Link to={'/create'}>create1</Link><br/>
-                { children }
-            </div>
+            <Layout>
+                <Sider collapsed={this.state.collapsed}>
+                    <div style={{ height: 100 }}></div>
+                    <Menu
+                        theme={'dark'}
+                        mode="inline"
+                        defaultOpenKeys={defaultOpenKeys}
+                        defaultSelectedKeys={[location.pathname]}
+                    >
+                        {this.renderMenu(menuList)}
+                    </Menu>
+                </Sider>
+                <Layout>
+                    <Header>
+                        <Icon
+                            className="trigger"
+                            type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
+                            onClick={() => this.setState({ collapsed: !this.state.collapsed })}
+                        />
+                    </Header>
+                    <Content>
+                        <LocaleProvider locale={zhCN}>{ children }</LocaleProvider>
+                    </Content>
+                </Layout>
+            </Layout>
+           
         );
     }
 }

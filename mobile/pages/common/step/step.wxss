@@ -1,0 +1,24 @@
+.step {
+  display: flex;
+
+}
+
+.step .up, .step .down {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 100%;
+  line-height: 36rpx;
+  text-align: center;
+}
+.step .up {
+  background: cornflowerblue;
+  color: #fff;
+}
+.step .down {
+  border: 1px solid #cdcdcd;
+}
+.step .num {
+  width: 100rpx;
+  text-align: center;
+}
+

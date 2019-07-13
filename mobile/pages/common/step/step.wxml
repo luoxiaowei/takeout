@@ -1,0 +1,16 @@
+<template name="step">
+  <view class="step">
+    <view 
+      bindtap="stepHandleDown" 
+      hidden="{{num == 0}}" 
+      data-id="{{id}}" 
+      class="down"
+    >-</view>
+    <view hidden="{{num == 0}}" class="num">{{num}}</view>
+    <view 
+      bindtap="stepHandleUp" 
+      data-id="{{id}}" 
+      class="up"
+    >+</view>
+  </view>
+</template>

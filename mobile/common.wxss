@@ -1,0 +1,18 @@
+.popup {
+	position: fixed;
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	align-items: flex-end;
+	z-index: 889;
+	background:rgba(0,0,0,0);
+	top:100vh
+}
+.popup-bg{
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	z-index: 888;
+	background:rgba(0,0,0,0.4);
+	top:0
+}

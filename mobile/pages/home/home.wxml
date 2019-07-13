@@ -1,0 +1,19 @@
+<!--pages/home/home.wxml-->
+<import src="/pages/common/footer/footer.wxml"/>
+<view>
+  <swiper 
+    indicator-dots="true"
+    autoplay="true"
+    interval="3000"
+    circular="true"
+    class="h400"
+  >
+    <block wx:for="{{imgUrls}}" wx:key="{{item}}">
+      <swiper-item>
+        <image src="{{item}}" class="w12 h400" mode="scaleToFill"/>
+      </swiper-item>
+    </block>
+  </swiper>
+  
+  <template is="footer" data="{{page: 'home'}}" />
+</view>

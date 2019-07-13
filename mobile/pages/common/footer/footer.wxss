@@ -1,0 +1,19 @@
+.footer {
+  display: flex;
+  height: 88rpx;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  z-index: 1000;
+  border-top: 1px solid #cdcdcd;
+  background: #fff;
+}
+.footer .item {
+  flex: 1;
+  text-align: center;
+  line-height: 88rpx;
+}
+.footer .active{
+  color: crimson;
+}

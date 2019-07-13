@@ -1,0 +1,12 @@
+/* pages/user/user.wxss */
+.header {
+  background: crimson;
+  height: 200rpx;
+  padding: 30rpx;
+}
+.header .avatar {
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 140rpx;
+  overflow: hidden;
+}

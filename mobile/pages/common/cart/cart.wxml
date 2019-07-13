@@ -1,0 +1,32 @@
+<import src="/pages/common/step/step.wxml"/>
+<template name="cart">
+  <view class="cart">
+    <view class="flexac flexsb bar">
+      <view bindtap="cartHandleShow" class="pl30 col">
+        <icon type="info" size="34" />
+      </view>
+      <navigator class="btn">去结算</navigator>
+    </view>
+    <view class="cart-popup">
+      <view class="popup-bg" hidden="{{!cartShow}}"></view>
+      <view class="popup" bindtap="cartHandleHide" animation="{{$isAnimation}}">
+        <view class="bgwhite ptb40" catchtap="cartStop">
+          <view class="flexsb plr40 pb20">
+            <view class="clight">已选商品</view>
+            <view class="clight fs24">清空</view>
+          </view>
+          <block wx:for="{{list}}" wx:key="{{index}}">
+            <view class="flexsb plr40 pb20">
+              <view>{{item.name}}</view>
+              <view class="flexac">
+                <view class="cred plr20">¥12</view>
+                <template is="step" data="{{num: item.num, id: item.id}}" />
+              </view>
+            </view>
+          </block>
+          <view style="width: 100vw;height: 176rpx;" />
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

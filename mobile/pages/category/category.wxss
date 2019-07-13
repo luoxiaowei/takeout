@@ -1,0 +1,43 @@
+/* pages/category/category.wxss */
+
+.category {
+  display: flex;
+  height: 100vh;
+}
+.nav {
+  width: 200rpx;
+  border-right: 1px solid #cdcdcd;
+  height: 100%;
+}
+.nav .box {
+  padding-bottom: 88rpx;
+}
+.nav .box .item {
+  line-height: 68rpx;
+  padding: 15rpx 20rpx;
+}
+.nav .box .item.active {
+  color: #000;
+  font-size: 28rpx;
+}
+.prd {
+  height: 100%;
+}
+.prd .box {
+  padding-bottom: 88rpx;
+}
+.prd .box .item {
+  padding: 15rpx 20rpx;
+  display: flex;
+}
+.prd .box .item .img {
+  width: 160rpx;
+  height: 160rpx;
+}
+.prd .box .item .info {
+  padding-left: 20rpx;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

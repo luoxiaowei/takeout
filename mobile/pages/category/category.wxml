@@ -1,0 +1,39 @@
+<!--pages/category/category.wxml-->
+<import src="/pages/common/footer/footer.wxml"/>
+<import src="/pages/common/cart/cart.wxml"/>
+<import src="/pages/common/step/step.wxml"/>
+<view>
+  <view class="category bgwhite">
+    <scroll-view class="nav" scroll-y>
+      <view class="box">
+        <block wx:for="{{nav}}" wx:key="{{item.id}}">
+          <view class="item {{item.id == active && 'active'}}">
+            {{item.name}}
+          </view>
+        </block>
+      </view>
+    </scroll-view>
+    <scroll-view class="prd">
+      <view class="box">
+        <block wx:for="{{prd[active]}}" wx:key="{{item.id}}">
+          <view class="item">
+            <image class="img" src="{{img}}" />
+            <view class="info">
+              <view>
+                <view>{{item.name}}</view>
+                <view class="oneline clight fs20">介绍</view>
+                <view class="clight fs20">月销售：12 好评率100%</view>
+              </view>
+              <view class="flexsb">
+                <text class="cred">¥12</text>
+                <template is="step" data="{{...step, num: item.num}}" />
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </scroll-view>
+  </view>
+  <template is="cart" data="{{...cart}}" />
+  <template is="footer" data="{{page: 'category'}}" />
+</view>
