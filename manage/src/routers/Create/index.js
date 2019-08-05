@@ -6,7 +6,8 @@ Router.addRoute({
     title: '创建',
     path: '/create',
     component: Create,
-    isMune: true
+    isMune: true,
+    icon: 'product'
 });
 
 Router.addStore({
