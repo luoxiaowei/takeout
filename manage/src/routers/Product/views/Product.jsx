@@ -33,7 +33,9 @@ export default class Main extends Component {
     render() {
         return (
             <div>
-                <div className={'flexje'}><Button onClick={this.handleAdd}>添加产品</Button></div>
+                <div className={'flexje'}>
+                    <Button onClick={this.handleAdd}>添加产品</Button>
+                </div>
                 <AddForm
                     visible={this.state.visible}
                     onCancel={this.handleCancel}
