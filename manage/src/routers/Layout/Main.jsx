@@ -112,7 +112,7 @@ export default class Main extends Component {
                         }}
                         className={'w12 mb10 bgwhite'}
                     >
-                        <div style={{ height: '64px', lineHeight: '64px' }} className={'flexsb bgwhite'}>
+                        <div style={{ height: '63px', lineHeight: '63px' }} className={'flexsb bgwhite'}>
                             <div className={'flexac'}>
                                 <Icon
                                     className="trigger"
