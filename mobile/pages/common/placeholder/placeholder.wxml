@@ -1,0 +1,7 @@
+<template name="placeholder">
+  <view class="flexcc bgblue w12 h88 cwhite" style=" {{width && 'width:' + width+ ';'}}{{ height && 'height:' + height + ';' }} {{ bg && 'background:' + bg + ';'}}">
+    <view>{{text || '占位'}}</view>
+  </view>
+  
+
+</template>

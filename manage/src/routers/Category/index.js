@@ -3,11 +3,11 @@ import CategoryStore from './actions/store';
 import Category from './views/Category';
 
 Router.addRoute({
-    title: '分类',
+    title: 'category',
     path: '/category',
     component: Category,
     isMune: true,
-    icon: 'category'
+    icon: 'product'
 });
 
 Router.addStore({

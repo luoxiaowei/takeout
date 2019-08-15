@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense, lazy } from 'react';
 import { Router, Route, Switch, Redirect } from 'react-router-dom';
 import { Provider } from 'mobx-react';
 import history from '../utils/history';
 import { isAuth } from '../utils/utils';
 import Layout from './Layout/Main';
 import Login from './Login/views/Login';
-import { NotFound } from 'components';
+import { NotFound, ErrorBoundary } from 'components';
 
 let routers = [];
 let stores = {};
@@ -31,7 +31,7 @@ class Main extends Component {
     renderRoute = (routers) => {
         return routers.map(item => {
             return item.childs ? this.renderRoute(item.childs) : (isAuth(item.authKey || 1)) ? (
-                <Route key={'route' + item.path} {...item}></Route>
+                <ErrorBoundary key={'route' + item.path} ><Route {...item} /></ErrorBoundary>
             ) : null;
         })
     }
@@ -49,8 +49,10 @@ class Main extends Component {
                                 return (
                                     <Layout menuList={routers} location={location}>
                                         <Switch>
-                                            <Route path='/' exact render={() => (<Redirect to={'/bankCardList'} />)}/>
-                                            {this.renderRoute(routers)}
+                                            <Suspense fallback={<div>Loading...</div>}>
+                                                <Route path='/' exact render={() => (<Redirect to={'/product'} />)}/>
+                                                {this.renderRoute(routers)}
+                                            </Suspense>
                                             <Route component={NotFound} />
                                         </Switch>
                                     </Layout>
@@ -58,6 +60,7 @@ class Main extends Component {
                             }
                         }}
                     />
+                    
                 </Router>
             </Provider>
         );

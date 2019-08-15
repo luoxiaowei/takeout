@@ -23,7 +23,7 @@
 | sale_num | 销量 |
 | desc | 产品描述 |
 
-### mainPicture 主图
+### main_picture 主图
 
 | 字段 | 说明 |
 | --- | ---- |

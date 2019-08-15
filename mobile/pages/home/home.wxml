@@ -1,6 +1,7 @@
 <!--pages/home/home.wxml-->
 <import src="/pages/common/footer/footer.wxml"/>
-<view>
+<import src="/pages/common/placeholder/placeholder.wxml"/>
+<view class='bgwhite'>
   <swiper 
     indicator-dots="true"
     autoplay="true"
@@ -14,6 +15,41 @@
       </swiper-item>
     </block>
   </swiper>
-  
+  <view>
+    <view class='p30'>
+      <template is="placeholder" data="{{height: '100rpx', text: '特价宣传图', bg: '#ffbb96'}}" />
+    </view>
+    <view class='flexac'>
+      <template is="placeholder" data="{{height: '200rpx', text: '宣传商品介绍', bg: '#ffd8bf'}}" />
+      <template is="placeholder" data="{{height: '200rpx', text: '宣传商品图', bg: '#ffd8bf'}}" />
+    </view>
+    <view>
+      <view class='tc lh88 pt40 fs36'>人气推荐</view>
+      <view class='tc pb40'>Target Recommended</view>
+      <view class='flexbox'>
+          <template is="placeholder" data="{{width: '50vw', height: '50vw', text: '商品图', bg: '#36cfc9'}}" />
+          <view>
+             <template is="placeholder" data="{{width: '50vw', height: '25vw', text: '商品图', bg: '#36cfc9'}}" />
+            <template is="placeholder" data="{{width: '50w', height: '25vw', text: '商品图', bg: '#36cfc9'}}" />
+          </view>
+      </view>
+    </view>
+
+    <view>
+      <view class='tc lh88 pt40 fs36'>-热卖精选-</view>
+      <view class='flexbox'>
+        <block wx:for="{{hotList}}">
+          <view class='w6 flexfc flexac'>
+            <view style="padding: 10vw 5vw 0 5vw;">
+              <template is="placeholder" data="{{width: '40vw', height: '40vw', text: '商品图', bg: '#f759ab'}}" />
+            </view>
+            <view class='lh60'>商品名称</view>
+            <view class='cred'>¥ 价格</view>
+          </view>
+        </block>
+      </view>
+    </view>
+
+  </view>
   <template is="footer" data="{{page: 'home'}}" />
 </view>

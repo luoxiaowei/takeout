@@ -8,7 +8,8 @@ page {
   font-size: 28rpx;
   color: #333;
   box-sizing: border-box;
-  background: #eee;
+  background: #fff;
+
 }
 
 /**
@@ -116,6 +117,15 @@ page {
   width: 100%;
 }
 
+.vwh50 {
+  width: 50vw;
+  height: 50vw;
+}
+
+.p30 {
+  padding: 30rpx;
+}
+
 .plr40 {
   padding-left: 40rpx;
   padding-right: 40rpx;
@@ -128,8 +138,17 @@ page {
   padding-top: 40rpx;
   padding-bottom: 40rpx;
 }
+.pt20 {
+  padding-top: 20rpx;
+}
+.pt40 {
+  padding-top: 40rpx;
+}
 .pb20 {
   padding-bottom: 20rpx;
+}
+.pb40 {
+  padding-bottom: 40rpx;
 }
 .mb15 {
   margin-bottom: 15rpx;
@@ -138,7 +157,9 @@ page {
 .pl30 {
   padding-left: 30rpx;
 }
-
+.lh60 {
+  line-height: 60rpx;
+}
 .lh88 {
   line-height: 88rpx;
 }
@@ -189,6 +210,10 @@ page {
 
 .fs24 {
   font-size: 24rpx;
+}
+
+.fs36 {
+  font-size: 36rpx;
 }
 
 .oneline {
@@ -246,10 +271,15 @@ page {
 .cgory {
   color: #666;
 }
-
+.cwhite {
+  color: #fff;
+}
 .clight {
   color: #999;
 }
 .bgwhite {
   background: #fff;
+}
+.bgblue {
+  background: #13c2c2;
 }

@@ -1,13 +1,28 @@
 import React, { Component } from 'react';
 import AddForm from './AddForm/AddForm';
-import { Button } from 'antd';
+import { Button, DatePicker } from 'antd';
+import { array } from 'prop-types';
 
 export default class Main extends Component {
-    constructor(props) {
-        super(props);
+    constructor(props, text) {
+        console.log(props, text);
+        super(props, text);
         this.state = {
             visible: false
         };
+    }
+
+    componentDidMount() {
+        
+        try {
+            const a = JSON.parse([1, 2]);
+        } catch(err){
+            console.log(this);
+        }
+    }
+
+    componentDidCatch(err) {
+        console.log(err);
     }
 
     handleReady = () => {
@@ -30,11 +45,21 @@ export default class Main extends Component {
         });
     }
 
+    handlePanelChange = (value, mode) => {
+        console.log(value, mode);
+    }
+
     render() {
+        let arr = [];
         return (
             <div>
                 <div className={'flexje'}>
                     <Button onClick={this.handleAdd}>添加产品</Button>
+                </div>
+                <div>
+                    {arr.map(item => {
+                        return <div/>
+                    })}
                 </div>
                 <AddForm
                     visible={this.state.visible}
@@ -42,5 +67,6 @@ export default class Main extends Component {
                 />
             </div>
         );
+        
     }
 }
