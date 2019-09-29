@@ -1,6 +1,7 @@
 // pages/category/category.js
 import cart from "../common/cart/cart.js";
 import step from "../common/step/step.js";
+const app = getApp();
 Page({
   ...cart,
   ...step,
@@ -33,7 +34,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(app.request);
+    app.request({
+      url: '/api/category/list'
+    }).then(res => {
+      console.log(res);
+    })
   },
 
   /**

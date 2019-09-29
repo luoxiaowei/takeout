@@ -3,39 +3,41 @@
 const Controller = require('./base');
 
 class CategoryController extends Controller {
-    async create() {
+    async save() {
         const { ctx, service } = this;
-        const createRule = {
-            title: {
-                type: 'string'
-            },
-            content: {
-                type: 'string'
-            },
+        const params = ctx.request.body;
+        const saveRule = {
+            category_name: { type: 'string' },
+            order_by: { type: 'integer' },
+            is_mune: { type: 'boolean' }
         };
         // 校验参数
-        ctx.validate(createRule);
-        // 组装参数
-        const author = ctx.session.userId;
-        const req = Object.assign(ctx.request.body, {
-            author
-        });
-        // 调用 Service 进行业务处理
-        const res = await service.post.create(req);
-        // 设置响应内容和响应状态码
-        ctx.body = {
-            id: res.id
-        };
-        ctx.status = 201;
+        ctx.validate(saveRule, params);
+
+        if (params.category_id) {
+            const res = await service.category.update(params);
+            this.success(res);
+        } else {
+            const res = await service.category.add(params);
+            this.success(res);
+        }
     }
     async list() {
-        const { ctx, service } = this;
+        const { service } = this;
         const result = await service.category.list();
-        // const total = await service.category.count();
-        this.success({
-            list: result,
-            // total
-        });
+        this.success(result);
+    }
+    async delete() {
+        const { service, ctx } = this;
+        const { category_id } = ctx.request.body;
+        const result = await service.category.delete(category_id);
+        this.success(result);
+    }
+    async changeMune() {
+        const { service, ctx } = this;
+        const { category_id } = ctx.request.body;
+        const result = await service.category.changeMune(category_id);
+        this.success(result);
     }
 }
 module.exports = CategoryController;

@@ -1,7 +1,7 @@
 // 重写 request 请求
-const root = 'http://localhost:7002';
+const root = 'http://myserver.com:7001';
 
-const request = (obj) => {
+function Request(obj = {}) {
   this.fetch = ({ url, data, method, success, fail, complete }) => {
     wx.request({
       url: root + url,
@@ -49,8 +49,9 @@ const request = (obj) => {
   });
   
 } 
-request.prototype = {
+Request.prototype = {
   post: function(url, data) {
+    console.log(this, 99);
     return new Promise((resolve, reject) => {
       wx.showLoading({
         title: '加载中',
@@ -86,4 +87,4 @@ request.prototype = {
   }
 };
 
-export default request;
+export default Request;

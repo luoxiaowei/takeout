@@ -1,3 +1,4 @@
 export default {
-    getUserList: '/api/user',
+    postProductSave: '/api/product/save',
+    getProductList: '/api/product/list',
 };

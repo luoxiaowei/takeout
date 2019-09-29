@@ -1,69 +1,56 @@
 import React, { Component } from 'react';
+import { observer, inject } from 'mobx-react';
+import { Button } from 'antd';
 import AddForm from './AddForm/AddForm';
-import { Button, DatePicker } from 'antd';
-import { array } from 'prop-types';
+import List from './List/List';
+
+@inject('category', 'product')
+@observer
 
 export default class Main extends Component {
     constructor(props, text) {
-        console.log(props, text);
         super(props, text);
         this.state = {
-            visible: false
+            visible: false,
+            formValue: {}
         };
     }
 
     componentDidMount() {
-        
-        try {
-            const a = JSON.parse([1, 2]);
-        } catch(err){
-            console.log(this);
-        }
-    }
-
-    componentDidCatch(err) {
-        console.log(err);
-    }
-
-    handleReady = () => {
-        
-    }
-
-    handleChange = (value) => {
-        this.setState({value});
-    }
-
-    handleAdd = () => {
-        this.setState({
-            visible: true
-        })
-    }
-
-    handleCancel = () => {
-        this.setState({
-            visible: false
+        this.props.category.getCategoryList((res) => {
+            let categoryObj = {};
+            res.data.map(item => categoryObj[item.category_id] = item.category_name);
+            this.props.product.categoryArray = res.data;
+            this.props.product.categoryObj = categoryObj;
         });
     }
 
-    handlePanelChange = (value, mode) => {
-        console.log(value, mode);
+    handleAdd = (formValue = {}) => {
+        this.setState({
+            visible: true,
+            formValue
+        })
+    }
+    handleCancel = () => {
+        this.setState({
+            visible: false,
+            handleAdd: {}
+        });
     }
 
     render() {
-        let arr = [];
         return (
             <div>
-                <div className={'flexje'}>
+                <div className={'flexje pb20'}>
                     <Button onClick={this.handleAdd}>添加产品</Button>
                 </div>
-                <div>
-                    {arr.map(item => {
-                        return <div/>
-                    })}
-                </div>
-                <AddForm
+                {this.state.visible && <AddForm
                     visible={this.state.visible}
                     onCancel={this.handleCancel}
+                    formValue={this.state.formValue}
+                />}
+                <List 
+                    onEdit={this.handleAdd}
                 />
             </div>
         );

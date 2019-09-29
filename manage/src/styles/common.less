@@ -11,3 +11,18 @@
         width: 100%;
     } 
 }
+
+// common
+
+:global {
+    .operate {
+        > * {
+            color: @primary;
+            margin-right: unit(15, @unit) / @base;
+            cursor: pointer;
+            &:nth-last-child(1) {
+                margin-right: 0;
+            }
+        }
+    }
+}

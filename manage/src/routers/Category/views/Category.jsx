@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import AddForm from './AddForm/AddForm';
 import { Button } from 'antd';
+import AddForm from './AddForm/AddForm';
+import List from './List/List';
 
 export default class Main extends Component {
     constructor(props) {
@@ -26,18 +27,32 @@ export default class Main extends Component {
 
     handleCancel = () => {
         this.setState({
-            visible: false
+            visible: false,
+            formValue: {}
         });
+    }
+    handleEdit = (formValue) => {
+        this.setState({
+            visible: true,
+            formValue
+        })
     }
 
     render() {
         return (
             <div>
                 <div className={'flexje'}><Button onClick={this.handleAdd}>添加分类</Button></div>
-                <AddForm
+                {this.state.visible && <AddForm
                     visible={this.state.visible}
+                    formValue={this.state.formValue}
                     onCancel={this.handleCancel}
-                />
+                />}
+                <div className={'pt20'}>
+                    <List 
+                        onEdit={this.handleEdit}
+                    />
+                </div>
+                
             </div>
         );
     }

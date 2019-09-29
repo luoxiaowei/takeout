@@ -10,7 +10,8 @@ const FormItem = Form.Item;
 class Main extends Component {
     static propTypes = {
         visible: PropTypes.bool,
-        onCancel: PropTypes.func
+        onCancel: PropTypes.func,
+        formValue: PropTypes.object
     }
     constructor(props) {
         super(props);
@@ -26,11 +27,23 @@ class Main extends Component {
     }
 
     handleOk = () => {
-
+        const { validateFields } = this.props.form;
+        const { category_id } = this.props.formValue;
+        validateFields((err, values) => {
+            if (err) {
+                return;
+            }
+            if (category_id) values.category_id = category_id;
+            this.props.category.postCategorySave(values, () => {
+                this.props.onCancel && this.props.onCancel();
+                this.props.category.getCategoryList();
+            });
+        })
+        
     }
 
     render() {
-        const { visible } = this.props;
+        const { visible, formValue = {} } = this.props;
         const { getFieldDecorator } = this.props.form;
         const formItemLayout = {
             labelCol: {
@@ -54,7 +67,7 @@ class Main extends Component {
                         <Col span={24}>
                             <FormItem label={'分类名称'} { ...formItemLayout }>
                                 {getFieldDecorator('category_name', {
-                                    initialValue: '',
+                                    initialValue: formValue.category_name || '',
                                     rules: [{ required: true, message: '不能为空' }]
                                 })(
                                     <Input className={'w12'} placeholder="请输入" maxLength={100} />
@@ -63,8 +76,8 @@ class Main extends Component {
                         </Col>
                         <Col span={24}>
                             <FormItem label={'排序'} { ...formItemLayout }>
-                                {getFieldDecorator('category_name', {
-                                    initialValue: '',
+                                {getFieldDecorator('order_by', {
+                                    initialValue: formValue.order_by || '',
                                     rules: [{ required: true, message: '不能为空' }]
                                 })(
                                     <InputNumber style={{ width: '100%' }} placeholder="请输入" min={0} max={1000000} />
@@ -74,7 +87,8 @@ class Main extends Component {
                         <Col span={24}>
                             <FormItem label={'是否显示'} { ...formItemLayout }>
                                 {getFieldDecorator('is_mune', {
-                                    initialValue: false,
+                                    initialValue: formValue.is_mune || false,
+                                    valuePropName: 'checked',
                                     rules: [{ required: false }]
                                 })(
                                     <Checkbox />
